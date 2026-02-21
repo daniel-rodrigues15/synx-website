@@ -71,11 +71,27 @@ nav a {
 
 nav a:hover { color: var(--accent); }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  font-size: 1.6rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+}
+
 /* HERO */
 .hero {
   position: relative;
-  height: 90vh;
-  padding-top: 10px;
+  height: 88vh;
+  padding-top: 14px;
   padding-bottom: 0px;
   overflow: hidden;
   color: white;
@@ -101,7 +117,7 @@ nav a:hover { color: var(--accent); }
   z-index: 2;
   max-width: 900px;
   padding: 0 20px;
-  top: 50%;
+  top: 51%;
   transform: translateY(-75%);
   margin-bottom: 1rem;
 }
@@ -116,9 +132,10 @@ nav a:hover { color: var(--accent); }
   max-width: 720px;
 }
 
-.hero p1 {
-  font-size: 1.2rem;
-  max-width: 720px;
+.hero p {
+  color: #ffffff;
+  text-align: left;
+  margin-top: 1px;
 }
 
 .btn {
@@ -247,7 +264,31 @@ footer {
 
 /* MOBILE NAV */
 @media (max-width: 768px) {
-  nav div { display: none; }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    flex-direction: column;
+    display: none;
+    padding: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-links a {
+    margin: 10px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
 }
 </style>
 </head>
@@ -257,7 +298,11 @@ footer {
 <header id="header">
   <nav>
     <!--<img src="synx-logo.png" alt="synX">-->
-    <div>
+     <div class="logo">
+    <!-- Optional logo -->
+    </div>
+
+    <div class="nav-links" id="navLinks">
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#whatwedo">What We Do</a>
@@ -265,13 +310,18 @@ footer {
       <a href="#contact">Contact</a>
     </div>
 
-        <!-- Dark mode toggle -->
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-      <svg id="theme-icon" viewBox="0 0 24 24" width="20" height="20" >
-        <path d="M21 12.79A9 9 0 0111.21 3
-                 7 7 0 1019 14.79z"/>
-      </svg>
-    </button>
+    <div class="nav-right">
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" width="20" height="20">
+          <path d="M21 12.79A9 9 0 0111.21 3
+                  7 7 0 1019 14.79z"/>
+        </svg>
+      </button>
+
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        ☰
+      </button>
+    </div>
     
   </nav>
 </header>
@@ -282,9 +332,9 @@ footer {
   </video>
   <div class="hero-content">
     <img src="FULL LOGO NOBACK.png" alt="Logo" width="90%" margin-top="-1000px">
-    <p1> Operating at the intersection of energy, digital and power system transformation.</p1><br>
+    <p> Operating at the intersection of energy, digital and power system transformation.<p>
     <a href="#whatwedo" class="btn btn-primary">What We Do</a>
-    <a href="#contact" class="btn btn-primary">Contact Us</a><br><br><br><br><!--<br><br><br><br><br><br> -->  <!-- Add btn btn-secondary to make white -->
+    <a href="#contact" class="btn btn-primary">Contact Us</a> <!-- Add btn btn-secondary to make white -->
   </div>
 </section>
 
@@ -390,5 +440,12 @@ function toggleTheme() {
 }
 </script>
 
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
+
 </body>
 </html>
+
