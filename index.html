@@ -454,16 +454,26 @@ function toggleTheme() {
     theme === "dark" ? "light" : "dark"
   );
 }
-</script>
 
-<script>
 function toggleMenu() {
   document.getElementById("navLinks").classList.toggle("active");
 }
+
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("active");
+}
+
+/* Auto-close menu when clicking a link */
+document.querySelectorAll('#navLinks a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById("navLinks").classList.remove("active");
+  });
+});  
 </script>
 
 </body>
 </html>
+
 
 
 
