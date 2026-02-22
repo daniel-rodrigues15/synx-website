@@ -28,6 +28,8 @@
 html { scroll-behavior: smooth; }
 html, body {
   margin: 0;
+  padding:0;
+  overflow-x: hidden;
   font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
@@ -119,9 +121,7 @@ nav img { height: 32px; }
   inset: 0;
   background: rgba(0,0,0,0.6);
 }
-.hero {
-  outline: 2px solid red;
-}
+  
 .hero-content {
   position: relative;
   z-index: 2;
@@ -475,6 +475,7 @@ document.querySelectorAll('#navLinks a').forEach(link => {
 
 </body>
 </html>
+
 
 
 
